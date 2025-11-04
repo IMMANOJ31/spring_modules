@@ -7,4 +7,6 @@ public interface UserService {
     boolean saveUser(@Valid UserDto dto);
 
     UserDto fetchUserById(int id);
+
+    boolean removeUser(UserDto dto);
 }

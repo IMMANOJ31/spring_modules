@@ -8,6 +8,8 @@ import org.xworkz.springboot.entity.UserEntity;
 import org.xworkz.springboot.repository.UserRepo;
 import org.xworkz.springboot.service.UserService;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -36,4 +38,20 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public boolean removeUser(UserDto dto) {
+        if (dto == null){
+            return false;
+        }
+        Optional<UserEntity> optionalUser = repo.findById(dto.getId());
+        if (optionalUser.isPresent()) {
+            repo.delete(optionalUser.get());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }
