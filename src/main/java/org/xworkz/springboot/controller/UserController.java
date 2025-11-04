@@ -43,15 +43,15 @@ public class UserController {
         } else
             return ResponseEntity.ok("User updated successfully");
     }
-}
 
-@DeleteMapping("{id}")
-public ResponseEntity<String> deleteUser(@PathVariable int id,UserDto dto){
-    boolean isDeleted = userService.removeUser(dto);
-    if(isDeleted){
-        return ResponseEntity.ok("User deleted successfully");
-    }else {
-        return ResponseEntity.badRequest().body("User not found");
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable int id){
+        boolean isDeleted = userService.removeUser(id);
+        if(isDeleted){
+            return ResponseEntity.ok("User deleted successfully");
+        }else {
+            return ResponseEntity.badRequest().body("User not found");
+        }
     }
 }
-}
+

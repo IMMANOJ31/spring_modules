@@ -40,17 +40,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean removeUser(UserDto dto) {
-        if (dto == null){
+    public boolean removeUser(int id) {
+        if (id == 0){
             return false;
         }
-        Optional<UserEntity> optionalUser = repo.findById(dto.getId());
-        if (optionalUser.isPresent()) {
-            repo.delete(optionalUser.get());
-            return true;
-        } else {
-            return false;
-        }
+        repo.deleteById(id);
+        return true;
     }
 
     @Override
