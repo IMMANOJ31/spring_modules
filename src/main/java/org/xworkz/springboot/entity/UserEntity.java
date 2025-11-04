@@ -15,6 +15,8 @@ public class UserEntity {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender", length = 10)
     private Gender gender;
     private String email;
     private String password;

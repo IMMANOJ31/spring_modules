@@ -25,7 +25,7 @@ public class UserController {
 
     @GetMapping("{id}")
     public ResponseEntity<String> getUserById(@PathVariable int id){
-      UserDto userDto =  userService.fetchUserById(id);
+        UserDto userDto =  userService.fetchUserById(id);
         if(userDto != null) {
             return ResponseEntity.ok("User found: " + userDto);
         }return ResponseEntity.badRequest().body("User not found");
@@ -33,25 +33,25 @@ public class UserController {
 
     @PutMapping("{id}")
     public ResponseEntity<String> updateUser(@PathVariable int id, @Valid @RequestBody UserDto dto,BindingResult result){
-        UserDto existingUser = userService.fetchUserById(id);
-        if (existingUser == null){
-            return ResponseEntity.badRequest().body("User not found");
-        } else {
-            boolean isSaved = userService.saveUser(dto);
-            if (isSaved == false) {
-                return ResponseEntity.badRequest().body("Validation failed " + result.getAllErrors());
-            } else
-                return ResponseEntity.ok("User updated successfully");
+        if (result.hasErrors()) {
+            return ResponseEntity.badRequest()
+                    .body("Validation failed: " + result.getAllErrors());
         }
+        boolean isUpdated = userService.updateUser(id,dto);
+        if (isUpdated == false) {
+            return ResponseEntity.badRequest().body("Validation failed " + result.getAllErrors());
+        } else
+            return ResponseEntity.ok("User updated successfully");
     }
+}
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable int id,UserDto dto){
-        boolean isDeleted = userService.removeUser(dto);
-        if(isDeleted){
-            return ResponseEntity.ok("User deleted successfully");
-        }else {
-            return ResponseEntity.badRequest().body("User not found");
-        }
+@DeleteMapping("{id}")
+public ResponseEntity<String> deleteUser(@PathVariable int id,UserDto dto){
+    boolean isDeleted = userService.removeUser(dto);
+    if(isDeleted){
+        return ResponseEntity.ok("User deleted successfully");
+    }else {
+        return ResponseEntity.badRequest().body("User not found");
     }
+}
 }

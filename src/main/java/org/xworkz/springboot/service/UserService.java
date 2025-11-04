@@ -9,4 +9,6 @@ public interface UserService {
     UserDto fetchUserById(int id);
 
     boolean removeUser(UserDto dto);
+
+    boolean updateUser(int id ,@Valid UserDto dto);
 }

@@ -53,5 +53,18 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public boolean updateUser(int id,UserDto dto) {
+        Optional<UserEntity> optionalUser = repo.findById(id);
+
+        if (optionalUser.isEmpty()) {
+            return false;
+        }
+
+        UserEntity userEntity = optionalUser.get();
+        BeanUtils.copyProperties(dto, userEntity, "id");
+        repo.save(userEntity);
+        return true;
+    }
 
 }
