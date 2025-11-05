@@ -11,6 +11,7 @@ import org.xworkz.springboot.service.UsersService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -33,6 +34,17 @@ public class UsersServiceImpl implements UsersService {
         List<UserEntity> savedEntities = repo.saveAll(userEntities);
         System.out.println("Saved to DB: " + savedEntities);
         return !savedEntities.isEmpty();
+    }
+
+    @Override
+    public List<UserDto> fetchUsers() {
+        List<UserEntity> userEntities = repo.findAll();
+        return userEntities.stream().map(userEntity -> {
+            UserDto userDto = new UserDto();
+            BeanUtils.copyProperties(userEntity,userDto);
+            System.err.println(userDto);
+            return userDto;
+        }).toList();
     }
 
 }
