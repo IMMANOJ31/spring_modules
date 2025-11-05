@@ -20,17 +20,19 @@ public class UsersServiceImpl implements UsersService {
 
 
     @Override
-    public boolean saveUsers(List<UserDto> userDto) {
-        if (userDto == null || userDto.isEmpty()) return false;
-        List<UserEntity> userEntities = userDto.stream().map(
-                userDto1 -> {
+    public boolean saveUsers(List<UserDto> userDtos) {
+        if (userDtos == null || userDtos.isEmpty()) {
+            return false;
+        }
+        List<UserEntity> userEntities = userDtos.stream()
+                .map(userDto -> {
                     UserEntity userEntity = new UserEntity();
-                    BeanUtils.copyProperties(userDto,userEntity);
-                    System.out.println(userEntity);
+                    BeanUtils.copyProperties(userDto, userEntity);
                     return userEntity;
                 }).toList();
-        List<UserEntity> userEntities1 = repo.saveAll(userEntities);
-        System.out.println(userEntities1);
-        return true;
+        List<UserEntity> savedEntities = repo.saveAll(userEntities);
+        System.out.println("Saved to DB: " + savedEntities);
+        return !savedEntities.isEmpty();
     }
+
 }
