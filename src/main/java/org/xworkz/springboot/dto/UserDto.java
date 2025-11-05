@@ -15,6 +15,7 @@ public class UserDto {
     private String password;
 }
 
+//@Data @AllArgsConstructor @NoArgsConstructor
 //public record UserDto(
 //        String firstName,
 //        String lastName,

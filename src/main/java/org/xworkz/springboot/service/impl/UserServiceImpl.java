@@ -51,7 +51,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean updateUser(int id,UserDto dto) {
         Optional<UserEntity> optionalUser = repo.findById(id);
-
         if (optionalUser.isEmpty()) {
             return false;
         }
