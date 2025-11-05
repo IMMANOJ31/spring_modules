@@ -10,4 +10,6 @@ public interface UsersService {
     boolean saveUsers(@Valid List<UserDto> userDto);
 
     List<UserDto> fetchUsers();
+
+    boolean removeUsers();
 }

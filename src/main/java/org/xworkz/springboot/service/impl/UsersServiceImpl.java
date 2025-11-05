@@ -47,4 +47,11 @@ public class UsersServiceImpl implements UsersService {
         }).toList();
     }
 
+    @Override
+    public boolean removeUsers() {
+       repo.deleteAll();
+       System.err.println("Users removed!!!!");
+       return true;
+    }
+
 }

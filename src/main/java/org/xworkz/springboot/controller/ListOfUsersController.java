@@ -34,4 +34,13 @@ public class ListOfUsersController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No users found ");
         }else return ResponseEntity.ok("Fetched users details");
     }
+
+    @DeleteMapping("")
+    public ResponseEntity<String> removeUsers(){
+        boolean userList = service.removeUsers();
+        if (userList == false){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No users found");
+        }
+        return ResponseEntity.ok("Removed user details");
+    }
 }
