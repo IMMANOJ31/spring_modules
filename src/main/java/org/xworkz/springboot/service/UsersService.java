@@ -2,6 +2,7 @@ package org.xworkz.springboot.service;
 
 import jakarta.validation.Valid;
 import org.xworkz.springboot.dto.UserDto;
+import org.xworkz.springboot.entity.UserEntity;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface UsersService {
     List<UserDto> fetchUsers();
 
     boolean removeUsers();
+
+    List<UserEntity> updateUsers(@Valid List<UserDto> dto);
 }

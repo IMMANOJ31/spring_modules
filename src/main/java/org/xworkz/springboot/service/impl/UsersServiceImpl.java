@@ -54,4 +54,14 @@ public class UsersServiceImpl implements UsersService {
        return true;
     }
 
+    @Override
+    public List<UserEntity> updateUsers(List<UserDto> dto) {
+        List<UserEntity> userEntities = dto.stream().map(userDto -> {
+            UserEntity entity = new UserEntity();
+            BeanUtils.copyProperties(userDto,entity);
+            return entity;
+        }).toList();
+        return repo.saveAll(userEntities);
+    }
+
 }

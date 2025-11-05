@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.xworkz.springboot.dto.UserDto;
+import org.xworkz.springboot.entity.UserEntity;
 import org.xworkz.springboot.service.UsersService;
 
 import java.util.List;
@@ -42,5 +43,14 @@ public class ListOfUsersController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No users found");
         }
         return ResponseEntity.ok("Removed user details");
+    }
+
+    @PutMapping("")
+    public ResponseEntity<String> updateUsers(@Valid @RequestBody List<UserDto> dto){
+        List<UserEntity> dtoList = service.updateUsers(dto);
+        if (dtoList == null || dtoList.isEmpty()){
+            return ResponseEntity.badRequest().body("Can't update users");
+        }
+        return ResponseEntity.ok("Users updated");
     }
 }
