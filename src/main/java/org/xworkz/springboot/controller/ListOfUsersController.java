@@ -19,7 +19,7 @@ public class ListOfUsersController {
     @Autowired
     UsersService service;
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<String> saveUsers(@Valid @RequestBody List<UserDto> userDto, BindingResult result){
         System.out.println("Invoking saveUsers method");
        boolean isUserSaved =  service.saveUsers(userDto);
@@ -29,7 +29,7 @@ public class ListOfUsersController {
            return ResponseEntity.ok("Users saved successfully");
     }
 
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<String> fetchUsers(){
         System.out.println("Invoking fetchUsers method");
         List<UserDto> list = service.fetchUsers();
@@ -38,7 +38,7 @@ public class ListOfUsersController {
         }else return ResponseEntity.ok("Fetched users details");
     }
 
-    @DeleteMapping("")
+    @DeleteMapping
     public ResponseEntity<String> removeUsers(){
         System.out.println("Invoking removeUsers method");
         boolean userList = service.removeUsers();
@@ -48,7 +48,7 @@ public class ListOfUsersController {
         return ResponseEntity.ok("Removed user details");
     }
 
-    @PutMapping("")
+    @PutMapping
     public ResponseEntity<String> updateUsers(@Valid @RequestBody List<UserDto> dto){
         System.out.println("Invoking updateUsers method");
         List<UserEntity> dtoList = service.updateUsers(dto);
