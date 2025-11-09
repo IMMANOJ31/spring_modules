@@ -6,4 +6,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LoggingAspect {
+
+    public LoggingAspect(){
+        System.err.println("Invoking logging aspect");
+    }
 }
