@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<String> saveUser(@Valid @RequestBody UserDto dto, BindingResult result){
         System.out.println("Invoking saveUser method");
         boolean isSaved = userService.saveUser(dto);
