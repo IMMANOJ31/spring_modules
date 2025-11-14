@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xworkz.springboot.dto.UserDto;
 import org.xworkz.springboot.entity.UserEntity;
+import org.xworkz.springboot.mapper.UserMapper;
 import org.xworkz.springboot.repository.UserRepo;
 import org.xworkz.springboot.service.UserService;
 
@@ -21,8 +22,7 @@ public class UserServiceImpl implements UserService {
         if (dto == null){
             return false;
         }
-        UserEntity userEntity = new UserEntity();
-        BeanUtils.copyProperties(dto,userEntity);
+        UserEntity userEntity = UserMapper.createInstance.userDtoToUserEntity(dto);
         UserEntity save = repo.save(userEntity);
         System.out.println("Saved User: " + save);
         return true;
@@ -32,8 +32,9 @@ public class UserServiceImpl implements UserService {
     public UserDto fetchUserById(int id) {
         UserEntity userEntity = repo.findById(id).orElse(null);
         if (userEntity != null){
-            UserDto userDto = new UserDto();
-            BeanUtils.copyProperties(userEntity,userDto);
+//            UserDto userDto = new UserDto();
+//            BeanUtils.copyProperties(userEntity,userDto);
+            UserDto userDto = UserMapper.createInstance.userEntityToUserDto(userEntity);
             return userDto;
         }
         return null;
@@ -55,8 +56,9 @@ public class UserServiceImpl implements UserService {
             return false;
         }
 
-        UserEntity userEntity = optionalUser.get();
-        BeanUtils.copyProperties(dto, userEntity, "id");
+        UserEntity existing = optionalUser.get();
+        UserEntity userEntity = UserMapper.createInstance.userDtoToUserEntity(dto);
+        userEntity.setId(existing.getId());
         repo.save(userEntity);
         return true;
     }

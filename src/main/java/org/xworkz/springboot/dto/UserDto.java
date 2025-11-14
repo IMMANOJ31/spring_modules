@@ -7,7 +7,6 @@ import org.xworkz.springboot.enums.Gender;
 
 @Data @AllArgsConstructor @NoArgsConstructor
 public class UserDto {
-    private int id;
     private String firstName;
     private String lastName;
     private Gender gender;

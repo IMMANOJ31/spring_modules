@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -14,8 +15,12 @@ public class LoggingAspect {
         System.err.println("Invoking logging aspect...");
     }
 
+    //@Pointcut
+
     @Before("execution(* com.xworkz.springboot.service.*.*(..))")
     public void logBefore(JoinPoint joinPoint) {
+        joinPoint.getSignature();
+
         System.err.println("Logging BEFORE: " + joinPoint.getSignature());
     }
 
