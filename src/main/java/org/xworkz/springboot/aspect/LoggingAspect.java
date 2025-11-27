@@ -54,15 +54,15 @@ public class LoggingAspect {
         String shortString = joinPoint.toShortString();
         String string = joinPoint.toString();
 
-        System.out.println("Signature: "+signature);
-        System.out.println("Args: "+args);
-        System.out.println("Kind "+kind);
-        System.out.println("Source location: "+sourceLocation);
-        System.out.println("Target: "+target);
-        System.out.println("Static part: "+staticPart);
-        System.out.println("Long String: "+longString);
-        System.out.println("Short String: "+shortString);
-        System.out.println("String: "+string);
+        System.err.println("Signature: "+signature);
+        System.err.println("Args: "+args);
+        System.err.println("Kind "+kind);
+        System.err.println("Source location: "+sourceLocation);
+        System.err.println("Target: "+target);
+        System.err.println("Static part: "+staticPart);
+        System.err.println("Long String: "+longString);
+        System.err.println("Short String: "+shortString);
+        System.err.println("String: "+string);
     }
 
     @AfterThrowing("allService()")
@@ -77,14 +77,14 @@ public class LoggingAspect {
         String shortString = joinPoint.toShortString();
         String string = joinPoint.toString();
 
-        System.out.println("Signature: "+signature);
-        System.out.println("Args: "+args);
-        System.out.println("Kind "+kind);
-        System.out.println("Source location: "+sourceLocation);
-        System.out.println("Target: "+target);
-        System.out.println("Static part: "+staticPart);
-        System.out.println("Long String: "+longString);
-        System.out.println("Short String: "+shortString);
-        System.out.println("String: "+string);
+        System.err.println("Signature: "+signature);
+        System.err.println("Args: "+args);
+        System.err.println("Kind "+kind);
+        System.err.println("Source location: "+sourceLocation);
+        System.err.println("Target: "+target);
+        System.err.println("Static part: "+staticPart);
+        System.err.println("Long String: "+longString);
+        System.err.println("Short String: "+shortString);
+        System.err.println("String: "+string);
     }
 }

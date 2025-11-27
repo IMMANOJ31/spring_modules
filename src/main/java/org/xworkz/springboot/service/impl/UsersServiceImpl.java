@@ -14,8 +14,14 @@ import java.util.List;
 @Service
 public class UsersServiceImpl implements UsersService {
 
-    @Autowired
-    UsersRepo repo;
+//    @Autowired
+//    UsersRepo repo;
+
+    private final UsersRepo repo;
+
+    public UsersServiceImpl(UsersRepo repo){
+        this.repo = repo;
+    }
 
 
     @Override

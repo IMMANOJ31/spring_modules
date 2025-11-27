@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(
-            basePackages = "org.xworkz.springboot.mysql.repository",
+            basePackages = "org.xworkz.springboot.repository",
             entityManagerFactoryRef = "mysqlEntityManager",
             transactionManagerRef = "mysqlTransactionManager"
     )
@@ -36,7 +36,7 @@ public class MySQLConfig {
 
         LocalContainerEntityManagerFactoryBean bean=new LocalContainerEntityManagerFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setPackagesToScan("org.xworkz.springboot.mysql.entity");
+        bean.setPackagesToScan("org.xworkz.springboot.entity");
         bean.setJpaVendorAdapter(new org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter());
         java.util.Map<String ,Object> properties=new  java.util.HashMap<>();
         properties.put("hibernate.hbm2ddl.auto","update");
