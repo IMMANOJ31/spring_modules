@@ -21,7 +21,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<String> saveUser(@Valid @RequestBody UserDto dto, BindingResult result){
-        System.out.println("Invoking saveUser method");
+        System.err.println("Invoking saveUser method");
         boolean isSaved = userService.saveUser(dto);
         if(isSaved == false){
             return ResponseEntity.badRequest().body("Validation failed "+result.getAllErrors());
@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping("{id}")
     public ResponseEntity<String> getUserById(@PathVariable int id){
-        System.out.println("Invoking UserById method");
+        System.err.println("Invoking UserById method");
         UserDto userDto =  userService.fetchUserById(id);
         if(userDto != null) {
             return ResponseEntity.ok("User found: " + userDto);
@@ -39,7 +39,7 @@ public class UserController {
 
     @PutMapping("{id}")
     public ResponseEntity<String> updateUser(@PathVariable int id, @Valid @RequestBody UserDto dto,BindingResult result){
-        System.out.println("Invoking updateUser method");
+        System.err.println("Invoking updateUser method");
         if (result.hasErrors()) {
             return ResponseEntity.badRequest()
                     .body("Validation failed: " + result.getAllErrors());
@@ -53,7 +53,7 @@ public class UserController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteUser(@PathVariable int id){
-        System.out.println("Invoking deleteUser method");
+        System.err.println("Invoking deleteUser method");
         boolean isDeleted = userService.removeUser(id);
         if(isDeleted){
             return ResponseEntity.ok("User deleted successfully");
