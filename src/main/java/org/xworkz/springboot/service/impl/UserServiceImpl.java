@@ -1,7 +1,8 @@
 package org.xworkz.springboot.service.impl;
 
-import org.springframework.beans.BeanUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.xworkz.springboot.dto.UserDto;
 import org.xworkz.springboot.entity.UserEntity;
@@ -29,6 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Cacheable(value = "userCache", key = "#id")
     public UserDto fetchUserById(int id) {
         UserEntity userEntity = repo.findById(id).orElse(null);
         if (userEntity != null){
