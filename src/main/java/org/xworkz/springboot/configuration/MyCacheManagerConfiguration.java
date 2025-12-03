@@ -8,6 +8,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 public class MyCacheManagerConfiguration {
 
+    public MyCacheManagerConfiguration(){
+        System.out.println(" Ivoking MyCacheManagerConfiguration");
+    }
+
     @Bean
     public CacheManagerCustomizer<ConcurrentMapCacheManager> cacheManagerCustomizer() {
         return (cacheManager) -> cacheManager.setAllowNullValues(false);
