@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Cacheable(value = "userCache", key = "#id")
+    @Cacheable(value = "bootCache", key = "#id")
     public UserDto fetchUserById(int id) {
         UserEntity userEntity = repo.findById(id).orElse(null);
         if (userEntity != null){
