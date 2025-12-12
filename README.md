@@ -68,7 +68,7 @@ Build Tool
 
 Gradle (multi-module setup)
 
-Databases
+🛢Databases
 
 MySQL / H2
 
