@@ -1,7 +1,6 @@
 package org.xworkz.springboot.service.impl;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.xworkz.springboot.dto.UserDto;
@@ -15,15 +14,21 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    UserRepo repo;
+    private final UserRepo repo;
+    private final UserMapper mapper;
+
+    public UserServiceImpl(UserRepo repo, UserMapper mapper){
+        this.repo = repo;
+        this.mapper = mapper;
+    }
 
     @Override
     public boolean saveUser(UserDto dto) {
         if (dto == null){
             return false;
         }
-        UserEntity userEntity = UserMapper.createInstance.userDtoToUserEntity(dto);
+        //UserEntity userEntity = UserMapper.createInstance.userDtoToUserEntity(dto);
+        UserEntity userEntity = mapper.userDtoToUserEntity(dto);
         UserEntity save = repo.save(userEntity);
         System.out.println("Saved User: " + save);
         return true;
@@ -36,7 +41,9 @@ public class UserServiceImpl implements UserService {
         if (userEntity != null){
 //            UserDto userDto = new UserDto();
 //            BeanUtils.copyProperties(userEntity,userDto);
-            UserDto userDto = UserMapper.createInstance.userEntityToUserDto(userEntity);
+            //UserDto userDto = UserMapper.createInstance.userEntityToUserDto(userEntity);
+            UserDto userDto = mapper.userEntityToUserDto(userEntity);
+
             return userDto;
         }
         return null;
@@ -59,7 +66,8 @@ public class UserServiceImpl implements UserService {
         }
 
         UserEntity existing = optionalUser.get();
-        UserEntity userEntity = UserMapper.createInstance.userDtoToUserEntity(dto);
+        //UserEntity userEntity = UserMapper.createInstance.userDtoToUserEntity(dto);
+        UserEntity userEntity = mapper.userDtoToUserEntity(dto);
         userEntity.setId(existing.getId());
         repo.save(userEntity);
         return true;

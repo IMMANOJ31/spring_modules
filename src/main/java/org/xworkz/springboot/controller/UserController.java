@@ -13,7 +13,7 @@ import org.xworkz.springboot.service.UserService;
 public class UserController {
 
     public UserController(){
-        System.out.println("User controller invoked");
+        System.err.println("User controller invoked");
     }
 
     @Autowired
