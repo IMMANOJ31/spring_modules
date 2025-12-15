@@ -1,12 +1,11 @@
-package org.xworkz.springboot.service.impl;
+package org.xworkz.springboot.mysql.service.impl;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.xworkz.springboot.dto.UserDto;
+import org.xworkz.springboot.mysql.dto.UserDto;
 import org.xworkz.springboot.entity.UserEntity;
-import org.xworkz.springboot.repository.UsersRepo;
-import org.xworkz.springboot.service.UsersService;
+import org.xworkz.springboot.mysql.repository.UsersRepo;
+import org.xworkz.springboot.mysql.service.UsersService;
 
 
 import java.util.List;

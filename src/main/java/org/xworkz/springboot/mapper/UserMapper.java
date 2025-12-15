@@ -3,7 +3,7 @@ package org.xworkz.springboot.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import org.xworkz.springboot.dto.UserDto;
+import org.xworkz.springboot.mysql.dto.UserDto;
 import org.xworkz.springboot.entity.UserEntity;
 
 

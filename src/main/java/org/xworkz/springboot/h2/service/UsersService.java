@@ -1,8 +1,8 @@
-package org.xworkz.springboot.service;
+package org.xworkz.springboot.h2.service;
 
 import jakarta.validation.Valid;
-import org.xworkz.springboot.dto.UserDto;
 import org.xworkz.springboot.entity.UserEntity;
+import org.xworkz.springboot.mysql.dto.UserDto;
 
 import java.util.List;
 

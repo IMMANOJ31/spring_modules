@@ -1,12 +1,12 @@
-package org.xworkz.springboot.controller;
+package org.xworkz.springboot.h2.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.xworkz.springboot.dto.UserDto;
-import org.xworkz.springboot.service.UserService;
+import org.xworkz.springboot.mysql.dto.UserDto;
+import org.xworkz.springboot.mysql.service.UserService;
 
 @RestController
 @RequestMapping("/user")

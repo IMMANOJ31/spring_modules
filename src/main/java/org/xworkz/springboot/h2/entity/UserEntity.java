@@ -1,10 +1,11 @@
-package org.xworkz.springboot.entity;
+package org.xworkz.springboot.h2.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.xworkz.springboot.enums.Gender;
+
 @Entity
 @Table(name = "user_info")
 @Data @AllArgsConstructor @NoArgsConstructor

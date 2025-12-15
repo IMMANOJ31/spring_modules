@@ -1,13 +1,13 @@
-package org.xworkz.springboot.service.impl;
+package org.xworkz.springboot.h2.service.impl;
 
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.xworkz.springboot.dto.UserDto;
 import org.xworkz.springboot.entity.UserEntity;
+import org.xworkz.springboot.h2.service.UserService;
 import org.xworkz.springboot.mapper.UserMapper;
-import org.xworkz.springboot.repository.UserRepo;
-import org.xworkz.springboot.service.UserService;
+import org.xworkz.springboot.mysql.dto.UserDto;
+import org.xworkz.springboot.mysql.repository.UserRepo;
 
 import java.util.Optional;
 

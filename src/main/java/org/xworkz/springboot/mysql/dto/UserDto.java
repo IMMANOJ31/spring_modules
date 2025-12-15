@@ -1,4 +1,4 @@
-package org.xworkz.springboot.dto;
+package org.xworkz.springboot.mysql.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

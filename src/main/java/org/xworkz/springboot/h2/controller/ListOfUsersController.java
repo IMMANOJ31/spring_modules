@@ -1,4 +1,4 @@
-package org.xworkz.springboot.controller;
+package org.xworkz.springboot.h2.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.xworkz.springboot.dto.UserDto;
+import org.xworkz.springboot.mysql.dto.UserDto;
 import org.xworkz.springboot.entity.UserEntity;
-import org.xworkz.springboot.service.UsersService;
+import org.xworkz.springboot.mysql.service.UsersService;
 
 import java.util.List;
 
