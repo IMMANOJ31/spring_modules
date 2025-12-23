@@ -3,7 +3,7 @@ package org.xworkz.springboot.mysql.service.impl;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.xworkz.springboot.mysql.dto.UserDto;
+import org.xworkz.springboot.dto.UserDto;
 import org.xworkz.springboot.entity.UserEntity;
 import org.xworkz.springboot.mapper.UserMapper;
 import org.xworkz.springboot.mysql.repository.UserRepo;

@@ -4,8 +4,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.xworkz.springboot.entity.UserEntity;
 import org.xworkz.springboot.h2.service.UsersService;
-import org.xworkz.springboot.mysql.dto.UserDto;
-import org.xworkz.springboot.mysql.repository.UsersRepo;
+import org.xworkz.springboot.dto.UserDto;
+import org.xworkz.springboot.h2.repository.UsersRepo;
 
 import java.util.List;
 

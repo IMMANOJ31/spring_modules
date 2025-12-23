@@ -2,7 +2,7 @@ package org.xworkz.springboot.mysql.service.impl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import org.xworkz.springboot.mysql.dto.UserDto;
+import org.xworkz.springboot.dto.UserDto;
 import org.xworkz.springboot.entity.UserEntity;
 import org.xworkz.springboot.mysql.repository.UsersRepo;
 import org.xworkz.springboot.mysql.service.UsersService;
@@ -13,15 +13,11 @@ import java.util.List;
 @Service
 public class UsersServiceImpl implements UsersService {
 
-//    @Autowired
-//    UsersRepo repo;
-
     private final UsersRepo repo;
 
     public UsersServiceImpl(UsersRepo repo){
         this.repo = repo;
     }
-
 
     @Override
     public boolean saveUsers(List<UserDto> userDtos) {

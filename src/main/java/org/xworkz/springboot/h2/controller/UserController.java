@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.xworkz.springboot.mysql.dto.UserDto;
-import org.xworkz.springboot.mysql.service.UserService;
+import org.xworkz.springboot.dto.UserDto;
+import org.xworkz.springboot.h2.service.UserService;
 
 @RestController
 @RequestMapping("/user")
@@ -21,7 +21,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<String> saveUser(@Valid @RequestBody UserDto dto, BindingResult result){
-        System.err.println("Invoking saveUser method");
+        System.err.println("Invoking H2 saveUser method");
         boolean isSaved = userService.saveUser(dto);
         if(isSaved == false){
             return ResponseEntity.badRequest().body("Validation failed "+result.getAllErrors());
@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping("{id}")
     public ResponseEntity<String> getUserById(@PathVariable int id){
-        System.err.println("Invoking UserById method");
+        System.err.println("Invoking H2 UserById method");
         UserDto userDto =  userService.fetchUserById(id);
         if(userDto != null) {
             return ResponseEntity.ok("User found: " + userDto);
@@ -39,7 +39,7 @@ public class UserController {
 
     @PutMapping("{id}")
     public ResponseEntity<String> updateUser(@PathVariable int id, @Valid @RequestBody UserDto dto,BindingResult result){
-        System.err.println("Invoking updateUser method");
+        System.err.println("Invoking H2 updateUser method");
         if (result.hasErrors()) {
             return ResponseEntity.badRequest()
                     .body("Validation failed: " + result.getAllErrors());
@@ -53,7 +53,7 @@ public class UserController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteUser(@PathVariable int id){
-        System.err.println("Invoking deleteUser method");
+        System.err.println("Invoking H2 deleteUser method");
         boolean isDeleted = userService.removeUser(id);
         if(isDeleted){
             return ResponseEntity.ok("User deleted successfully");

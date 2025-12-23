@@ -1,7 +1,7 @@
 package org.xworkz.springboot.h2.service;
 
 import jakarta.validation.Valid;
-import org.xworkz.springboot.mysql.dto.UserDto;
+import org.xworkz.springboot.dto.UserDto;
 
 public interface UserService {
     boolean saveUser(@Valid UserDto dto);

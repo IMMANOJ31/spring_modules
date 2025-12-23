@@ -1,4 +1,4 @@
-package org.xworkz.springboot.h2.entity;
+package org.xworkz.springboot.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

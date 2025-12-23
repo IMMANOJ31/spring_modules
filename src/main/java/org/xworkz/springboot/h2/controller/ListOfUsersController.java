@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.xworkz.springboot.mysql.dto.UserDto;
+import org.xworkz.springboot.dto.UserDto;
 import org.xworkz.springboot.entity.UserEntity;
-import org.xworkz.springboot.mysql.service.UsersService;
+import org.xworkz.springboot.h2.service.UsersService;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class ListOfUsersController {
 
     @PostMapping
     public ResponseEntity<String> saveUsers(@Valid @RequestBody List<UserDto> userDto, BindingResult result){
-        System.out.println("Invoking saveUsers method");
+        System.out.println("Invoking H2 saveUsers method");
        boolean isUserSaved =  service.saveUsers(userDto);
        if (isUserSaved == false){
          return ResponseEntity.badRequest().body("Validation failed "+result.hasErrors());
@@ -31,7 +31,7 @@ public class ListOfUsersController {
 
     @GetMapping
     public ResponseEntity<String> fetchUsers(){
-        System.out.println("Invoking fetchUsers method");
+        System.out.println("Invoking H2 fetchUsers method");
         List<UserDto> list = service.fetchUsers();
         if (list == null || list.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No users found ");
@@ -40,7 +40,7 @@ public class ListOfUsersController {
 
     @DeleteMapping
     public ResponseEntity<String> removeUsers(){
-        System.out.println("Invoking removeUsers method");
+        System.out.println("Invoking H2 removeUsers method");
         boolean userList = service.removeUsers();
         if (userList == false){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No users found");
@@ -50,7 +50,7 @@ public class ListOfUsersController {
 
     @PutMapping
     public ResponseEntity<String> updateUsers(@Valid @RequestBody List<UserDto> dto){
-        System.out.println("Invoking updateUsers method");
+        System.out.println("Invoking H2 updateUsers method");
         List<UserEntity> dtoList = service.updateUsers(dto);
         if (dtoList == null || dtoList.isEmpty()){
             return ResponseEntity.badRequest().body("Can't update users");
